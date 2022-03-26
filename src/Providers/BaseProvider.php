@@ -33,10 +33,10 @@ abstract class BaseProvider implements ProviderInterface
         $this->port = config('app.host_port') ?? 587;
     }
 
-    public function smtp(object $dataForMail): bool
+    public function smtp(object $mail): bool
     {
         try {
-            $this->getProps($dataForMail)
+            $this->getProps($mail)
                 ->mountEmail()
                 ->Send();
             return true;
@@ -49,19 +49,19 @@ abstract class BaseProvider implements ProviderInterface
         return false;
     }
 
-    protected function getProps($dataForMail)
+    protected function getProps($mail)
     {
         $this->remetente = new stdClass;
-        $this->remetente->nome = $dataForMail->remetente->nome ?? null;
-        $this->remetente->endereco = self::required($dataForMail->remetente->endereco, 'endereço do remetente');
-        $this->destinatario = self::required($dataForMail->destinatario, 'endereço do destinatário');
-        $this->assunto = self::required($dataForMail->assunto, 'assunto');
-        $this->msgHtml = $dataForMail->msgHtml ?? null;
-        $this->msgText = $dataForMail->msgText ?? null;
-        $this->configurationSet = $dataForMail->configurationSet ?? null;
-        $this->SMTPDebug = $dataForMail->SMTPDebug ?? null;
-        $this->stringAttachments = $dataForMail->stringAttachments ?? [];
-        $this->attachments = $dataForMail->attachments ?? [];
+        $this->remetente->nome = $mail->remetente->nome ?? null;
+        $this->remetente->endereco = self::required($mail->remetente->endereco, 'endereço do remetente');
+        $this->destinatario = self::required($mail->destinatario, 'endereço do destinatário');
+        $this->assunto = self::required($mail->assunto, 'assunto');
+        $this->msgHtml = $mail->msgHtml ?? null;
+        $this->msgText = $mail->msgText ?? null;
+        $this->configurationSet = $mail->configurationSet ?? null;
+        $this->SMTPDebug = $mail->SMTPDebug ?? null;
+        $this->stringAttachments = $mail->stringAttachments ?? [];
+        $this->attachments = $mail->attachments ?? [];
 
         return $this;
     }
@@ -124,25 +124,18 @@ abstract class BaseProvider implements ProviderInterface
         return $this;
     }
 
-    protected function addAttachment($attachments)
+    protected function addAttachment(array $attachments): void
     {
         foreach ($attachments as $attachment)
             $this->mail->AddAttachment($attachment->file, basename($attachment->file));
     }
 
-    protected function addStringAttachment($attachments)
+    protected function addStringAttachment(array $attachments): void
     {
         foreach ($attachments as $attachment)
             $this->mail->AddStringAttachment($attachment->string, $attachment->filename, $attachment->encodingBase ?? 'base64', $attachment->mimeType ?? null);
     }
 
-    public function api(object $dataForMail): bool
-    {
-        return false; // TODO: implementar futuramente
-    }
-
-    public function sdk(object $dataForMail): bool
-    {
-        return false; // TODO: implementar futuramente
-    }
+    public function api(object $dataForMail): bool{return false;}
+    public function sdk(object $dataForMail): bool{return false;}
 }
