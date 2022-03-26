@@ -4,7 +4,7 @@ namespace Allyson\Providers;
 
 interface ProviderInterface
 {
-    public function api(object $email): bool;
-    public function sdk(object $email): bool;
-    public function smtp(object $email): bool;
+    public function api(object $mail): bool;
+    public function sdk(object $mail): bool;
+    public function smtp(object $mail): bool;
 }

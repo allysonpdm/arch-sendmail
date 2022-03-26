@@ -126,16 +126,18 @@ abstract class BaseProvider implements ProviderInterface
 
     protected function addAttachment(array $attachments): void
     {
-        foreach ($attachments as $attachment)
+        foreach ($attachments as $attachment){
             $this->mail->AddAttachment($attachment->file, basename($attachment->file));
+        }
     }
 
     protected function addStringAttachment(array $attachments): void
     {
-        foreach ($attachments as $attachment)
+        foreach ($attachments as $attachment){
             $this->mail->AddStringAttachment($attachment->string, $attachment->filename, $attachment->encodingBase ?? 'base64', $attachment->mimeType ?? null);
+        }
     }
 
-    public function api(object $dataForMail): bool{return false;}
-    public function sdk(object $dataForMail): bool{return false;}
+    abstract public function api(object $mail): bool;
+    abstract public function sdk(object $mail): bool;
 }
