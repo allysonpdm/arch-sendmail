@@ -32,7 +32,6 @@
     },
     "autoload": {
         "psr-4": {
-            "Allyson\\Adapters\\": "src/Adapters",
             "Allyson\\Mailer\\": "src/Mailer",
             "Allyson\\Providers\\": "src/Providers/",
             "Allyson\\Providers\\Amazon\\": "src/Providers/Amazon",

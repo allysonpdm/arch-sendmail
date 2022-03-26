@@ -3,7 +3,6 @@
 namespace Allyson\Mailer;
 
 use Allyson\Providers\ProviderInterface;
-use Allyson\Providers\SendGrid\SendGridAdapter;
 
 abstract class Mailer implements MailerInterface
 {

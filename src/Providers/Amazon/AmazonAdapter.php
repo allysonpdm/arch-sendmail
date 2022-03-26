@@ -3,10 +3,6 @@
 namespace Allyson\Providers\Amazon;
 
 use Allyson\Providers\BaseProvider;
-use Exception as GlobalException;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-use stdClass;
 
 class AmazonAdapter extends BaseProvider
 {
