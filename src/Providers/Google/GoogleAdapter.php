@@ -47,4 +47,14 @@ class GoogleAdapter extends BaseProvider
         return $this;
     }
 
+    public function api(object $mail): bool
+    {
+        return false;
+    }
+
+    public function sdk(object $mail): bool
+    {
+        return false;
+    }
+
 }

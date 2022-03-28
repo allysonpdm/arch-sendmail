@@ -13,4 +13,14 @@ class SendGridAdapter extends BaseProvider
         $this->host = config('app.host_smtp') ?? 'smtp.sendgrid.net';
         $this->port = config('app.host_port') ?? 587;
     }
+
+    public function api(object $mail): bool
+    {
+        return false;
+    }
+
+    public function sdk(object $mail): bool
+    {
+        return false;
+    }
 }

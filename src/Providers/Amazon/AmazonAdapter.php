@@ -12,4 +12,14 @@ class AmazonAdapter extends BaseProvider
         $this->passwordSmtp = config('app.password_smtp');
         $this->host = config('app.host_smtp');
     }
+
+    public function api(object $mail): bool
+    {
+        return false;
+    }
+
+    public function sdk(object $mail): bool
+    {
+        return false;
+    }
 }
