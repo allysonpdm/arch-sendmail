@@ -36,17 +36,29 @@ abstract class BaseProvider implements ProviderInterface
     public function smtp(object $mail): bool
     {
         try {
-            $this->getProps($mail)
+            $this->getProps(self::codificar($mail))
                 ->mountEmail()
                 ->Send();
             return true;
-            echo "Email sent!", PHP_EOL;
+            //echo "Email sent!", PHP_EOL;
         } catch (phpmailerException $e) {
-            echo "An error occurred. {$e->errorMessage()}", PHP_EOL; // Catch errors from PHPMailer.
+
+            //TODO: Notificar a falha ao admin
+            //TODO: Adicionar a uma fila para reenviar o email
+
+            //echo "An error occurred. {$e->errorMessage()}", PHP_EOL; // Catch errors from PHPMailer.
         } catch (Exception $e) {
-            echo "Email not sent. {$this->mail->ErrorInfo}", PHP_EOL; // Catch errors from Amazon SES.
+            //echo "Email not sent. {$this->mail->ErrorInfo}", PHP_EOL; // Catch errors from Amazon SES.
         }
         return false;
+    }
+
+    private static function codificar(object $obj): object
+    {
+        foreach ($obj as $key => $value) {
+            $obj->$key = utf8_decode($value);
+        }
+        return $obj;
     }
 
     protected function getProps($mail)
