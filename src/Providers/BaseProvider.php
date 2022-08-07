@@ -101,7 +101,7 @@ abstract class BaseProvider implements ProviderInterface
         return $this;
     }
 
-    protected function setMessage($mail)
+    protected function setMessage(Mail $mail)
     {
         // Specify the content of the message.
         $this->mail->isHTML(true);
