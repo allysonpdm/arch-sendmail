@@ -5,7 +5,7 @@ namespace Allyson\Mailer\Infos;
 use Allyson\Mailer\Infos\Destinatario;
 use Allyson\Mailer\Infos\Remetente;
 
-class Mail
+class Mail implements MailInterface
 {
     public Destinatario $destinatario;
     public Remetente $remetente;

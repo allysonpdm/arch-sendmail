@@ -2,7 +2,7 @@
 
 namespace Allyson\Providers;
 
-use Allyson\Mailer\Mail;
+use Allyson\Mailer\Infos\Mail;
 
 interface ProviderInterface
 {

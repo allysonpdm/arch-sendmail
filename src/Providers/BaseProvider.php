@@ -2,7 +2,7 @@
 
 namespace Allyson\Providers;
 
-use Allyson\Mailer\Mail;
+use Allyson\Mailer\Infos\Mail;
 use Allyson\Mailer\Infos\Destinatario;
 use Allyson\Mailer\Infos\Remetente;
 use Exception as GlobalException;
@@ -40,27 +40,6 @@ abstract class BaseProvider implements ProviderInterface
             //echo "Email not sent. {$this->mail->ErrorInfo}", PHP_EOL; // Catch errors from Amazon SES.
         }
         return false;
-    }
-
-    protected function getProps(Mail $mail)
-    {
-        $this->remetente = new Remetente(
-            email: $mail->remetente->email,
-            nome: $mail->remetente->nome ?? null,
-        );
-        $this->destinatario = new Destinatario(
-            email: $mail->destinatario->email,
-            nome: $mail->destinatario->nome ?? null,
-        );
-        $this->assunto = $mail->assunto;
-        $this->msgHtml = $mail->msgHtml ?? null;
-        $this->msgText = $mail->msgText ?? null;
-        $this->configurationSet = $mail->configurationSet ?? null;
-        $this->SMTPDebug = $mail->SMTPDebug ?? null;
-        $this->stringAttachments = $mail->stringAttachments ?? [];
-        $this->attachments = $mail->attachments ?? [];
-
-        return $this;
     }
 
     protected function mountEmail(Mail $mail)
@@ -108,8 +87,8 @@ abstract class BaseProvider implements ProviderInterface
         $this->mail->Subject    = $mail->assunto;
         $this->mail->Body       = $mail->msgHtml;
         $this->mail->AltBody    = $mail->msgText;
-        $this->addAttachment($mail->attachments);
-        $this->addStringAttachment($mail->stringAttachments);
+        $this->addAttachment($mail->attachments ?? []);
+        $this->addStringAttachment($mail->stringAttachments ?? []);
         return $this;
     }
 

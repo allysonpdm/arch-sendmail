@@ -2,6 +2,7 @@
 
 namespace Allyson\Mailer;
 
+use Allyson\Mailer\Infos\MailInterface;
 use Allyson\Providers\ProviderInterface;
 
 abstract class Mailer implements MailerInterface
@@ -9,7 +10,7 @@ abstract class Mailer implements MailerInterface
     protected ProviderInterface $mailer;
     protected object $mail;
 
-    public function __construct(ProviderInterface $mailer, mixed $mail)
+    public function __construct(ProviderInterface $mailer, MailInterface $mail)
     {
         $this->mailer = $mailer;
         $this->mail = $mail;
