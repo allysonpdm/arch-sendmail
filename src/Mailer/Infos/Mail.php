@@ -1,6 +1,6 @@
 <?php
 
-namespace Allyson\Mailer;
+namespace Allyson\Mailer\Infos;
 
 use Allyson\Mailer\Infos\Destinatario;
 use Allyson\Mailer\Infos\Remetente;
@@ -30,9 +30,9 @@ class Mail
     ) {
         $this->destinatario = $destinatario;
         $this->remetente = $remetente;
-        $this->assunto = $assunto;
-        $this->msgHtml = $msgHtml;
-        $this->msgText = $msgText;
+        $this->assunto = utf8_decode($assunto);
+        $this->msgHtml = utf8_decode($msgHtml);
+        $this->msgText = utf8_decode($msgText);
         $this->configurationSet = $configurationSet;
         $this->SMTPDebug = $SMTPDebug;
         $this->attachments = $attachments;

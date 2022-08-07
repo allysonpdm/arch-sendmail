@@ -6,10 +6,10 @@ use Allyson\Providers\ProviderInterface;
 
 abstract class Mailer implements MailerInterface
 {
-    private ProviderInterface $mailer;
+    protected ProviderInterface $mailer;
     protected object $mail;
 
-    public function __construct(ProviderInterface $mailer, Mail $mail)
+    public function __construct(ProviderInterface $mailer, mixed $mail)
     {
         $this->mailer = $mailer;
         $this->mail = $mail;
