@@ -9,7 +9,7 @@ abstract class Mailer implements MailerInterface
     private ProviderInterface $mailer;
     protected object $mail;
 
-    public function __construct(ProviderInterface $mailer, object $mail)
+    public function __construct(ProviderInterface $mailer, Mail $mail)
     {
         $this->mailer = $mailer;
         $this->mail = $mail;
