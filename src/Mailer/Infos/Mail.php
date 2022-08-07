@@ -5,7 +5,8 @@ namespace Allyson\Mailer;
 use Allyson\Mailer\Infos\Destinatario;
 use Allyson\Mailer\Infos\Remetente;
 
-class Mail {
+class Mail
+{
     public Destinatario $destinatario;
     public Remetente $remetente;
     public string $assunto;

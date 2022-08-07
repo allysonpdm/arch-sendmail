@@ -2,7 +2,8 @@
 
 namespace Allyson\Mailer\Infos;
 
-class Remetente {
+class Remetente
+{
     public ?string $email;
     public ?string $password;
     public ?string $host;
