@@ -2,6 +2,9 @@
 
 namespace Allyson\Providers;
 
+use Allyson\Mailer\Mail;
+use Allyson\Mailer\Infos\Destinatario;
+use Allyson\Mailer\Infos\Remetente;
 use Exception as GlobalException;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -9,36 +12,22 @@ use stdClass;
 
 abstract class BaseProvider implements ProviderInterface
 {
-    protected $usernameSmtp;
-    protected $passwordSmtp;
-    protected $host;
-    protected $port = 587;
     protected $mail;
+    public Remetente $remetente;
+    public Destinatario $destinatario;
+    public string $assunto;
+    public ?string $msgHtml;
+    public ?string $msgText;
+    public array $attachments;
+    public array $stringAttachments;
+    public ?string $configurationSet;
+    public ?int $SMTPDebug;
 
-    public $remetente;
-    public $destinatario;
-    public $assunto;
-    public $msgHtml;
-    public $msgText;
-    public $attachments;
-    public $stringAttachments;
-    public $configurationSet;
-    public $SMTPDebug;
-
-    public function __construct()
-    {
-        $this->usernameSmtp = config('app.username_smtp');
-        $this->passwordSmtp = config('app.password_smtp');
-        $this->host = config('app.host_smtp');
-        $this->port = config('app.host_port') ?? 587;
-    }
-
-    public function smtp(object $mail): bool
+    public function smtp(Mail $mail): bool
     {
         try {
-            $this->getProps(self::codificar($mail))
-                ->mountEmail()
-                ->Send();
+            $this->mountEmail($mail)
+                ->Send($mail);
             return true;
             //echo "Email sent!", PHP_EOL;
         } catch (phpmailerException $e) {
@@ -53,21 +42,17 @@ abstract class BaseProvider implements ProviderInterface
         return false;
     }
 
-    private static function codificar(object $obj): object
+    protected function getProps(Mail $mail)
     {
-        foreach ($obj as $key => $value) {
-            $obj->$key = utf8_decode($value);
-        }
-        return $obj;
-    }
-
-    protected function getProps($mail)
-    {
-        $this->remetente = new stdClass;
-        $this->remetente->nome = $mail->remetente->nome ?? null;
-        $this->remetente->endereco = self::required($mail->remetente->endereco, 'endereço do remetente');
-        $this->destinatario = self::required($mail->destinatario, 'endereço do destinatário');
-        $this->assunto = self::required($mail->assunto, 'assunto');
+        $this->remetente = new Remetente(
+            email: $mail->remetente->email,
+            nome: $mail->remetente->nome ?? null,
+        );
+        $this->destinatario = new Destinatario(
+            email: $mail->destinatario->email,
+            nome: $mail->destinatario->nome ?? null,
+        );
+        $this->assunto = $mail->assunto;
         $this->msgHtml = $mail->msgHtml ?? null;
         $this->msgText = $mail->msgText ?? null;
         $this->configurationSet = $mail->configurationSet ?? null;
@@ -78,61 +63,53 @@ abstract class BaseProvider implements ProviderInterface
         return $this;
     }
 
-    protected static function required($entry, $name)
+    protected function mountEmail(Mail $mail)
     {
-        if (empty($entry))
-            throw new GlobalException("O parâmetro $name deve ser informado.");
-
-        return $entry;
-    }
-
-    protected function mountEmail()
-    {
-        return $this->setConfig()
-            ->setSender()
-            ->setRecipients()
-            ->setMessage()
+        return $this->setConfig($mail)
+            ->setSender($mail)
+            ->setRecipients($mail)
+            ->setMessage($mail)
             ->mail;
     }
 
-    protected function setConfig()
+    protected function setConfig(Mail $mail)
     {
         $this->mail = new PHPMailer(true);
 
         // Specify the SMTP settings.
         $this->mail->isSMTP();
-        $this->mail->Username   = $this->usernameSmtp;
-        $this->mail->Password   = $this->passwordSmtp;
-        $this->mail->Host       = $this->host;
-        $this->mail->Port       = $this->port;
+        $this->mail->Username   = $mail->remetente->email;
+        $this->mail->Password   = $mail->remetente->password;
+        $this->mail->Host       = $mail->remetente->host;
+        $this->mail->Port       = $mail->remetente->port;
         $this->mail->SMTPAuth   = true;
         $this->mail->SMTPSecure = 'tls';
-        $this->mail->SMTPDebug = $this->SMTPDebug;
-        $this->mail->addCustomHeader('X-SES-CONFIGURATION-SET', $this->configurationSet);
+        $this->mail->SMTPDebug = $mail->SMTPDebug;
+        $this->mail->addCustomHeader('X-SES-CONFIGURATION-SET', $mail->configurationSet);
         return $this;
     }
 
-    protected function setSender()
+    protected function setSender(Mail $mail)
     {
-        $this->mail->setFrom($this->remetente->endereco, $this->remetente->nome);
+        $this->mail->setFrom($mail->remetente->email, $mail->remetente->nome);
         return $this;
     }
 
-    protected function setRecipients()
+    protected function setRecipients(Mail $mail)
     {
-        $this->mail->addAddress($this->destinatario);
+        $this->mail->addAddress($mail->destinatario->email);
         return $this;
     }
 
-    protected function setMessage()
+    protected function setMessage($mail)
     {
         // Specify the content of the message.
         $this->mail->isHTML(true);
-        $this->mail->Subject    = $this->assunto;
-        $this->mail->Body       = $this->msgHtml;
-        $this->mail->AltBody    = $this->msgText;
-        $this->addAttachment($this->attachments);
-        $this->addStringAttachment($this->stringAttachments);
+        $this->mail->Subject    = $mail->assunto;
+        $this->mail->Body       = $mail->msgHtml;
+        $this->mail->AltBody    = $mail->msgText;
+        $this->addAttachment($mail->attachments);
+        $this->addStringAttachment($mail->stringAttachments);
         return $this;
     }
 
@@ -150,6 +127,6 @@ abstract class BaseProvider implements ProviderInterface
         }
     }
 
-    abstract public function api(object $mail): bool;
-    abstract public function sdk(object $mail): bool;
+    abstract public function api(Mail $mail): bool;
+    abstract public function sdk(Mail $mail): bool;
 }
