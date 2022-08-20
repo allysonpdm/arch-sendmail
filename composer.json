@@ -32,17 +32,17 @@
     },
     "autoload": {
         "psr-4": {
-            "ArchLaravelSendMail\\Mailer\\": "src/Mailer",
-            "ArchLaravelSendMail\\Mailer\\Infos\\": "src/Mailer/Infos",
-            "ArchLaravelSendMail\\Providers\\": "src/Providers/",
-            "ArchLaravelSendMail\\Providers\\Amazon\\": "src/Providers/Amazon",
-            "ArchLaravelSendMail\\Providers\\Google\\": "src/Providers/Google",
-            "ArchLaravelSendMail\\Providers\\SendGrid\\": "src/Providers/SendGrid"
+            "ArchSendMailLaravel\\Mailer\\": "src/Mailer",
+            "ArchSendMailLaravel\\Mailer\\Infos\\": "src/Mailer/Infos",
+            "ArchSendMailLaravel\\Providers\\": "src/Providers/",
+            "ArchSendMailLaravel\\Providers\\Amazon\\": "src/Providers/Amazon",
+            "ArchSendMailLaravel\\Providers\\Google\\": "src/Providers/Google",
+            "ArchSendMailLaravel\\Providers\\SendGrid\\": "src/Providers/SendGrid"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ArchLaravelSendMail\\Tests\\": "tests"
+            "ArchSendMailLaravel\\Tests\\": "tests"
         }
     },
     "scripts": {

@@ -1,9 +1,9 @@
 <?php
 
-namespace ArchLaravelSendMail\Providers\SendGrid;
+namespace ArchSendMailLaravel\Providers\SendGrid;
 
-use ArchLaravelSendMail\Mailer\Infos\Mail;
-use ArchLaravelSendMail\Providers\BaseProvider;
+use ArchSendMailLaravel\Mailer\Infos\Mail;
+use ArchSendMailLaravel\Providers\BaseProvider;
 
 class SendGridAdapter extends BaseProvider
 {

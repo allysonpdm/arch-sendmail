@@ -1,9 +1,9 @@
 <?php
 
-namespace ArchLaravelSendMail\Mailer;
+namespace ArchSendMailLaravel\Mailer;
 
-use ArchLaravelSendMail\Mailer\Infos\MailInterface;
-use ArchLaravelSendMail\Providers\ProviderInterface;
+use ArchSendMailLaravel\Mailer\Infos\MailInterface;
+use ArchSendMailLaravel\Providers\ProviderInterface;
 
 interface MailerInterface
 {

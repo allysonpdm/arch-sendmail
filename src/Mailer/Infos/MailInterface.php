@@ -1,6 +1,6 @@
 <?php
 
-namespace ArchLaravelSendMail\Mailer\Infos;
+namespace ArchSendMailLaravel\Mailer\Infos;
 
 interface MailInterface
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace ArchLaravelSendMail\Mailer\Infos;
+namespace ArchSendMailLaravel\Mailer\Infos;
 
-use ArchLaravelSendMail\Mailer\Infos\Destinatario;
-use ArchLaravelSendMail\Mailer\Infos\Remetente;
+use ArchSendMailLaravel\Mailer\Infos\Destinatario;
+use ArchSendMailLaravel\Mailer\Infos\Remetente;
 
 class Mail implements MailInterface
 {

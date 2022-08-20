@@ -1,10 +1,10 @@
 <?php
 
-namespace ArchLaravelSendMail\Providers;
+namespace ArchSendMailLaravel\Providers;
 
-use ArchLaravelSendMail\Mailer\Infos\Mail;
-use ArchLaravelSendMail\Mailer\Infos\Destinatario;
-use ArchLaravelSendMail\Mailer\Infos\Remetente;
+use ArchSendMailLaravel\Mailer\Infos\Mail;
+use ArchSendMailLaravel\Mailer\Infos\Destinatario;
+use ArchSendMailLaravel\Mailer\Infos\Remetente;
 use Exception as GlobalException;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

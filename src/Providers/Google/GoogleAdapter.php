@@ -1,9 +1,9 @@
 <?php
 
-namespace ArchLaravelSendMail\Providers\Google;
+namespace ArchSendMailLaravel\Providers\Google;
 
-use ArchLaravelSendMail\Mailer\Infos\Mail;
-use ArchLaravelSendMail\Providers\BaseProvider;
+use ArchSendMailLaravel\Mailer\Infos\Mail;
+use ArchSendMailLaravel\Providers\BaseProvider;
 
 class GoogleAdapter extends BaseProvider
 {
