@@ -11,7 +11,7 @@
     "authors": [
         {
             "name": "Allyson",
-            "email": "alysonmt@gmail.com",
+            "email": "allysonmt@gmail.com",
             "role": "Developer"
         }
     ],
@@ -32,17 +32,17 @@
     },
     "autoload": {
         "psr-4": {
-            "Allyson\\Mailer\\": "src/Mailer",
-            "Allyson\\Mailer\\Infos\\": "src/Mailer/Infos",
-            "Allyson\\Providers\\": "src/Providers/",
-            "Allyson\\Providers\\Amazon\\": "src/Providers/Amazon",
-            "Allyson\\Providers\\Google\\": "src/Providers/Google",
-            "Allyson\\Providers\\SendGrid\\": "src/Providers/SendGrid"
+            "ArchLaravelSendMail\\Mailer\\": "src/Mailer",
+            "ArchLaravelSendMail\\Mailer\\Infos\\": "src/Mailer/Infos",
+            "ArchLaravelSendMail\\Providers\\": "src/Providers/",
+            "ArchLaravelSendMail\\Providers\\Amazon\\": "src/Providers/Amazon",
+            "ArchLaravelSendMail\\Providers\\Google\\": "src/Providers/Google",
+            "ArchLaravelSendMail\\Providers\\SendGrid\\": "src/Providers/SendGrid"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Allyson\\Tests\\": "tests"
+            "ArchLaravelSendMail\\Tests\\": "tests"
         }
     },
     "scripts": {

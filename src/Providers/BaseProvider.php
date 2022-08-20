@@ -1,10 +1,10 @@
 <?php
 
-namespace Allyson\Providers;
+namespace ArchLaravelSendMail\Providers;
 
-use Allyson\Mailer\Infos\Mail;
-use Allyson\Mailer\Infos\Destinatario;
-use Allyson\Mailer\Infos\Remetente;
+use ArchLaravelSendMail\Mailer\Infos\Mail;
+use ArchLaravelSendMail\Mailer\Infos\Destinatario;
+use ArchLaravelSendMail\Mailer\Infos\Remetente;
 use Exception as GlobalException;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

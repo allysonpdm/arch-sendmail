@@ -1,6 +1,6 @@
 <?php
 
-namespace Allyson\Mailer\Infos;
+namespace ArchLaravelSendMail\Mailer\Infos;
 
 interface MailInterface
 {

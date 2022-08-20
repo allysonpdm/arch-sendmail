@@ -1,9 +1,9 @@
 <?php
 
-namespace Allyson\Mailer\Infos;
+namespace ArchLaravelSendMail\Mailer\Infos;
 
-use Allyson\Mailer\Infos\Destinatario;
-use Allyson\Mailer\Infos\Remetente;
+use ArchLaravelSendMail\Mailer\Infos\Destinatario;
+use ArchLaravelSendMail\Mailer\Infos\Remetente;
 
 class Mail implements MailInterface
 {

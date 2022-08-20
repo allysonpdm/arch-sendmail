@@ -1,9 +1,9 @@
 <?php
 
-namespace Allyson\Providers\Amazon;
+namespace ArchLaravelSendMail\Providers\Amazon;
 
-use Allyson\Mailer\Infos\Mail;
-use Allyson\Providers\BaseProvider;
+use ArchLaravelSendMail\Mailer\Infos\Mail;
+use ArchLaravelSendMail\Providers\BaseProvider;
 
 class AmazonAdapter extends BaseProvider
 {

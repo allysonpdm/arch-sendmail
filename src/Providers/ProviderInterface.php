@@ -1,8 +1,8 @@
 <?php
 
-namespace Allyson\Providers;
+namespace ArchLaravelSendMail\Providers;
 
-use Allyson\Mailer\Infos\Mail;
+use ArchLaravelSendMail\Mailer\Infos\Mail;
 
 interface ProviderInterface
 {

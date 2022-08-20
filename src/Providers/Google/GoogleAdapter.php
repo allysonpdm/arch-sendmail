@@ -1,9 +1,9 @@
 <?php
 
-namespace Allyson\Providers\Google;
+namespace ArchLaravelSendMail\Providers\Google;
 
-use Allyson\Mailer\Infos\Mail;
-use Allyson\Providers\BaseProvider;
+use ArchLaravelSendMail\Mailer\Infos\Mail;
+use ArchLaravelSendMail\Providers\BaseProvider;
 
 class GoogleAdapter extends BaseProvider
 {

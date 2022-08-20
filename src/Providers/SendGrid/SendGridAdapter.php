@@ -1,9 +1,9 @@
 <?php
 
-namespace Allyson\Providers\SendGrid;
+namespace ArchLaravelSendMail\Providers\SendGrid;
 
-use Allyson\Mailer\Infos\Mail;
-use Allyson\Providers\BaseProvider;
+use ArchLaravelSendMail\Mailer\Infos\Mail;
+use ArchLaravelSendMail\Providers\BaseProvider;
 
 class SendGridAdapter extends BaseProvider
 {

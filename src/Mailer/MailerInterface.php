@@ -1,9 +1,9 @@
 <?php
 
-namespace Allyson\Mailer;
+namespace ArchLaravelSendMail\Mailer;
 
-use Allyson\Mailer\Infos\MailInterface;
-use Allyson\Providers\ProviderInterface;
+use ArchLaravelSendMail\Mailer\Infos\MailInterface;
+use ArchLaravelSendMail\Providers\ProviderInterface;
 
 interface MailerInterface
 {
