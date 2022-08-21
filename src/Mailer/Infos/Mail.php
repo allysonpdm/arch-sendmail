@@ -18,8 +18,6 @@ class Mail implements MailInterface
         public array $attachments = [],
         public array $stringAttachments = [],
     ) {
-        $this->assunto = utf8_decode($assunto);
-        $this->msgHtml = utf8_decode($msgHtml);
-        $this->msgText = utf8_decode($msgText);
+        // Code here...
     }
 }

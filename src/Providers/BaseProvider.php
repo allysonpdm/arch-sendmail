@@ -65,6 +65,8 @@ abstract class BaseProvider implements ProviderInterface
         $this->mail->SMTPSecure = 'tls';
         $this->mail->SMTPDebug = $mail->SMTPDebug;
         $this->mail->addCustomHeader('X-SES-CONFIGURATION-SET', $mail->configurationSet);
+        $this->mail->CharSet = 'UTF-8';
+        $this->mail->setLanguage('pt_BR');
         return $this;
     }
 
@@ -87,6 +89,7 @@ abstract class BaseProvider implements ProviderInterface
         $this->mail->Subject    = $mail->assunto;
         $this->mail->Body       = $mail->msgHtml;
         $this->mail->AltBody    = $mail->msgText;
+        
         $this->addAttachment($mail->attachments ?? []);
         $this->addStringAttachment($mail->stringAttachments ?? []);
         return $this;

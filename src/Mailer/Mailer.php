@@ -7,13 +7,12 @@ use ArchSendMailLaravel\Providers\ProviderInterface;
 
 abstract class Mailer implements MailerInterface
 {
-    protected ProviderInterface $mailer;
-    protected object $mail;
-
-    public function __construct(ProviderInterface $mailer, MailInterface $mail)
+    public function __construct(
+        protected ProviderInterface $provider,
+        protected MailInterface $mail
+    )
     {
-        $this->mailer = $mailer;
-        $this->mail = $mail;
+        // Code here
     }
 
     public function api(): bool
