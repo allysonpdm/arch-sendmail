@@ -2,7 +2,7 @@
 
 namespace ArchSendMailLaravel\App\Dtos;
 
-use ArchCrudLaravel\App\ObjectValues\Email;
+use PhpObjectValues\App\ObjectValues\Email;
 use ArchSendMailLaravel\Mailer\Infos\{
     Destinatario,
     Remetente

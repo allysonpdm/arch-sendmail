@@ -2,7 +2,7 @@
 
 namespace ArchSendMailLaravel\Mailer\Infos;
 
-use ArchCrudLaravel\App\ObjectValues\Email;
+use PhpObjectValues\App\ObjectValues\Email;
 
 class Destinatario
 {
