@@ -1,8 +1,8 @@
 <?php
 
-namespace ArchSendMailLaravel\Providers;
+namespace ArchSendMailLaravel\App\Contracts;
 
-use ArchSendMailLaravel\Mailer\Infos\Mail;
+use ArchSendMailLaravel\App\Dtos\Mail;
 
 interface ProviderInterface
 {

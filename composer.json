@@ -1,67 +1,65 @@
 {
-    "name": "allyson/sendmail",
+    "authors": [
+        {
+            "email": "allysonmt@gmail.com",
+            "name": "Allyson",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ArchSendMailLaravel\\App\\": "src/app"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ArchSendMailLaravel\\Tests\\": "src/tests"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
     "description": "Biblioteca para o envio de emails",
-    "version": "1.0.0",
+    "extra": {
+        "laravel": {
+            "aliases": {},
+            "providers": []
+        }
+    },
     "keywords": [
         "library-sendmail",
         "send",
         "mail"
     ],
-    "type": "library",
-    "authors": [
-        {
-            "name": "Allyson",
-            "email": "allysonmt@gmail.com",
-            "role": "Developer"
-        }
-    ],
+    "name": "allyson/sendmail",
     "require": {
+        "allyson/php-object-values": "dev-master",
+        "php": "^8.2",
         "phpmailer/phpmailer": "^6.5",
-        "sendgrid/sendgrid": "^7.11"
+        "sendgrid/sendgrid": "^7.11",
+        "spatie/laravel-data": "^3.0"
     },
     "require-dev": {
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.0",
         "nunomaduro/phpinsights": "^1.14",
         "phpmd/phpmd": "^2.9",
         "phpunit/phpunit": "^9.3.3",
         "sebastian/phpcpd": "^6.0",
-        "squizlabs/php_codesniffer": "*",
-        "facade/ignition": "^2.5",
-        "fakerphp/faker": "^1.9.1",
-        "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "ArchSendMailLaravel\\Mailer\\": "src/Mailer",
-            "ArchSendMailLaravel\\Mailer\\Infos\\": "src/Mailer/Infos",
-            "ArchSendMailLaravel\\Providers\\": "src/Providers/",
-            "ArchSendMailLaravel\\Providers\\Amazon\\": "src/Providers/Amazon",
-            "ArchSendMailLaravel\\Providers\\Google\\": "src/Providers/Google",
-            "ArchSendMailLaravel\\Providers\\SendGrid\\": "src/Providers/SendGrid"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "ArchSendMailLaravel\\Tests\\": "tests"
-        }
+        "squizlabs/php_codesniffer": "*"
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "phpcpd": ".\\vendor\\bin\\phpcpd .\\src",
         "phpcs": ".\\vendor\\bin\\phpcbf --standard=PSR12 .\\src",
         "phpmd": ".\\vendor\\bin\\phpmd .\\src text cleancode,codesize,controversial,design,naming,unusedcode --ignore-violations-on-exit --reportfile phpmd.text",
-        "phpcpd": ".\\vendor\\bin\\phpcpd .\\src"
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
-    "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [],
-            "aliases": {}
-        }
-    }
+    "type": "library",
+    "version": "2.0.0"
 }
