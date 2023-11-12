@@ -1,6 +1,6 @@
 <?php
 
-namespace ArchSendMailLaravel\Mailer;
+namespace ArchSendMailLaravel\Mailers;
 
 use ArchSendMailLaravel\App\Dtos\Mail;
 use ArchSendMailLaravel\App\Contracts\{
