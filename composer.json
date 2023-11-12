@@ -8,7 +8,6 @@
     ],
     "autoload": {
         "psr-4": {
-            "ArchSendMail\\": "src",
             "ArchSendMail\\App\\": "src/app"
         }
     },

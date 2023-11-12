@@ -1,13 +1,13 @@
 <?php
 
-namespace ArchSendMailLaravel\Providers;
+namespace ArchSendMail\Providers;
 
-use ArchSendMailLaravel\App\Contracts\{
+use ArchSendMail\App\Contracts\{
     ProviderInterface,
     SmtpTraitRequirement
 };
-use ArchSendMailLaravel\App\Dtos\Mail;
-use ArchSendMailLaravel\App\Traits\HasSmtp;
+use ArchSendMail\App\Dtos\Mail;
+use ArchSendMail\App\Traits\HasSmtp;
 
 abstract class BaseProvider implements ProviderInterface, SmtpTraitRequirement
 {

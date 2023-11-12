@@ -1,9 +1,11 @@
 <?php
 
-namespace ArchSendMailLaravel\App\Traits;
+namespace ArchSendMail\App\Traits;
 
-use ArchSendMailLaravel\App\Dtos\Mail;
-use ArchSendMailLaravel\Dtos\SmtpConfigs;
+use ArchSendMail\App\Dtos\{
+    Mail,
+    SmtpConfigs
+};
 use Exception;
 use PHPMailer\PHPMailer\{
     PHPMailer,

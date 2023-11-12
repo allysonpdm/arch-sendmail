@@ -1,8 +1,8 @@
 <?php
 
-namespace ArchSendMailLaravel\App\Contracts;
+namespace ArchSendMail\App\Contracts;
 
-use ArchSendMailLaravel\App\Dtos\Mail;
+use ArchSendMail\App\Dtos\Mail;
 
 interface MailerInterface
 {

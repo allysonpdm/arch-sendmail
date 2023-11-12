@@ -1,8 +1,8 @@
 <?php
 
-namespace ArchSendMailLaravel\App\Contracts;
+namespace ArchSendMail\App\Contracts;
 
-use ArchSendMailLaravel\Dtos\SmtpConfigs;
+use ArchSendMail\App\Dtos\SmtpConfigs;
 use PHPMailer\PHPMailer\SMTP;
 
 interface SmtpTraitRequirement

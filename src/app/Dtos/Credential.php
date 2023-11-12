@@ -1,6 +1,6 @@
 <?php
 
-namespace ArchSendMailLaravel\Dtos;
+namespace ArchSendMail\App\Dtos;
 
 use Spatie\LaravelData\Data;
 

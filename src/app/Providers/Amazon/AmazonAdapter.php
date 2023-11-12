@@ -1,9 +1,9 @@
 <?php
 
-namespace ArchSendMailLaravel\Providers\Amazon;
+namespace ArchSendMail\Providers\Amazon;
 
-use ArchSendMailLaravel\App\Dtos\Mail;
-use ArchSendMailLaravel\Providers\BaseProvider;
+use ArchSendMail\App\Dtos\Mail;
+use ArchSendMail\Providers\BaseProvider;
 
 class AmazonAdapter extends BaseProvider
 {
