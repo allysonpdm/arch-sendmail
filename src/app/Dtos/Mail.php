@@ -3,7 +3,7 @@
 namespace ArchSendMail\App\Dtos;
 
 use PhpObjectValues\App\ObjectValues\Email;
-use ArchSendMail\App\ObjectValues\{
+use ArchSendMail\App\ObjectsValues\{
     Destinatario,
     Remetente
 };
