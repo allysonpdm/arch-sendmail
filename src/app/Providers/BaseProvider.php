@@ -2,11 +2,14 @@
 
 namespace ArchSendMailLaravel\Providers;
 
-use ArchSendMailLaravel\App\Contracts\ProviderInterface;
+use ArchSendMailLaravel\App\Contracts\{
+    ProviderInterface,
+    SmtpTraitRequirement
+};
 use ArchSendMailLaravel\App\Dtos\Mail;
 use ArchSendMailLaravel\App\Traits\HasSmtp;
 
-abstract class BaseProvider implements ProviderInterface
+abstract class BaseProvider implements ProviderInterface, SmtpTraitRequirement
 {
     protected Mail $mail;
 
