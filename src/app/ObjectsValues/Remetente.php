@@ -1,6 +1,6 @@
 <?php
 
-namespace ArchSendMail\App\ObjectValues;
+namespace ArchSendMail\App\ObjectsValues;
 
 use PhpObjectValues\App\ObjectValues\Email;
 
