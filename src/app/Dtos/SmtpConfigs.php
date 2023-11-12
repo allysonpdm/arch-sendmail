@@ -2,6 +2,8 @@
 
 namespace ArchSendMailLaravel\Dtos;
 
+use Spatie\LaravelData\Data;
+
 class SmtpConfigs extends Data
 {
     public function __construct(

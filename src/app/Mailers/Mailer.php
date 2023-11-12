@@ -3,8 +3,10 @@
 namespace ArchSendMailLaravel\Mailer;
 
 use ArchSendMailLaravel\App\Dtos\Mail;
-use ArchSendMailLaravel\App\Contracts\MailerInterface;
-use ArchSendMailLaravel\App\Contracts\ProviderInterface;
+use ArchSendMailLaravel\App\Contracts\{
+    MailerInterface,
+    ProviderInterface
+};
 
 abstract class Mailer implements MailerInterface
 {

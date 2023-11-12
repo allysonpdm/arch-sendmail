@@ -7,16 +7,18 @@ use ArchSendMailLaravel\Dtos\SmtpConfigs;
 use Exception;
 use PHPMailer\PHPMailer\{
     PHPMailer,
-    Exception as GlobalException
+    Exception as GlobalException,
+    SMTP
 };
 
 trait HasSmtp
 {
     protected Mail $mail;
     protected SmtpConfigs $smtpConfig;
+    protected SMTP $debugMode = SMTP::DEBUG_OFF;
+    protected PHPMailer $mailer;
     protected string $charSet = 'UTF-8';
     protected string $language = 'pt_BR';
-    protected int $debugMode = 0;
 
     public function setSmtpConfigs(SmtpConfigs $smtpConfig): self
     {
@@ -36,7 +38,7 @@ trait HasSmtp
         return $this;
     }
 
-    public function setDebugMode(int $debugMode): self
+    public function setDebugMode(SMTP $debugMode): self
     {
         $this->debugMode = $debugMode;
         return $this;
@@ -88,13 +90,18 @@ trait HasSmtp
 
     protected function setSender()
     {
-        $this->mailer->setFrom($this->mail->remetente->email, $this->mail->remetente->nome);
+        $this->mailer
+            ->setFrom(
+                address:$this->mail->remetente->email,
+                name: $this->mail->remetente->nome
+            );
         return $this;
     }
 
     protected function setRecipients()
     {
-        $this->mailer->addAddress($this->mail->destinatario->email);
+        $this->mailer
+            ->addAddress(address: $this->mail->destinatario->email);
         return $this;
     }
 
@@ -105,9 +112,9 @@ trait HasSmtp
         $this->mailer->Subject = $this->mail->assunto;
         $this->mailer->Body = $this->mail->msgHtml;
         $this->mailer->AltBody = $this->mail->msgText;
-        
-        $this->addAttachment($this->mail->attachments ?? []);
-        $this->addStringAttachment($this->mail->stringAttachments ?? []);
+
+        $this->addAttachment(attachments: $this->mail->attachments ?? []);
+        $this->addStringAttachment(attachments: $this->mail->stringAttachments ?? []);
         return $this;
     }
 
@@ -115,7 +122,10 @@ trait HasSmtp
     {
         foreach ($attachments as $attachment){
             $this->mailer
-                ->AddAttachment($attachment->file, basename($attachment->file));
+                ->AddAttachment(
+                    path: $attachment->file,
+                    name: basename($attachment->file)
+                );
         }
     }
 

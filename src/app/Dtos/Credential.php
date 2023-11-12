@@ -2,6 +2,8 @@
 
 namespace ArchSendMailLaravel\Dtos;
 
+use Spatie\LaravelData\Data;
+
 class Credential extends Data
 {
     public function __construct(

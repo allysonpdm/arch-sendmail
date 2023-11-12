@@ -2,14 +2,18 @@
 
 namespace ArchSendMailLaravel\App\Dtos;
 
-use ArchSendMailLaravel\Mailer\Infos\Destinatario;
-use ArchSendMailLaravel\Mailer\Infos\Remetente;
+use ArchCrudLaravel\App\ObjectValues\Email;
+use ArchSendMailLaravel\Mailer\Infos\{
+    Destinatario,
+    Remetente
+};
+use Spatie\LaravelData\Data;
 
 final class Mail extends Data
 {
     public Destinatario $destinatario;
     public Remetente $remetente;
-    
+
     public function __construct(
         Destinatario|string $destinatario,
         Remetente|string $remetente,
@@ -31,7 +35,7 @@ final class Mail extends Data
             return $destinatario;
         }
 
-        return new Destinatario(email: $destinatario);
+        return new Destinatario(email: new Email($destinatario));
     }
 
     private function setRemetente(Remetente|string $remetente): Remetente
@@ -39,6 +43,10 @@ final class Mail extends Data
         if($remetente instanceof Remetente){
             return $remetente;
         }
+
+        $remetente = !empty($remetente)
+            ? new Email($remetente)
+            : null;
 
         return new Remetente(email: $remetente);
     }

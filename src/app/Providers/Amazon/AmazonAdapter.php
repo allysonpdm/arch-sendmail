@@ -2,7 +2,7 @@
 
 namespace ArchSendMailLaravel\Providers\Amazon;
 
-use ArchSendMailLaravel\Mailer\Infos\Mail;
+use ArchSendMailLaravel\App\Dtos\Mail;
 use ArchSendMailLaravel\Providers\BaseProvider;
 
 class AmazonAdapter extends BaseProvider
