@@ -1,9 +1,9 @@
 <?php
 
-namespace ArchSendMail\Providers\SendGrid;
+namespace ArchSendMail\App\Providers\SendGrid;
 
 use ArchSendMail\App\Dtos\Mail;
-use ArchSendMail\Providers\BaseProvider;
+use ArchSendMail\App\Providers\BaseProvider;
 
 class SendGridAdapter extends BaseProvider
 {

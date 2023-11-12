@@ -1,9 +1,9 @@
 <?php
 
-namespace ArchSendMail\Providers\Google;
+namespace ArchSendMail\App\Providers\Google;
 
 use ArchSendMail\App\Dtos\Mail;
-use ArchSendMail\Providers\BaseProvider;
+use ArchSendMail\App\Providers\BaseProvider;
 
 class GoogleAdapter extends BaseProvider
 {

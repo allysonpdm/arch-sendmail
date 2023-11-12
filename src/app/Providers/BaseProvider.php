@@ -1,6 +1,6 @@
 <?php
 
-namespace ArchSendMail\Providers;
+namespace ArchSendMail\App\Providers;
 
 use ArchSendMail\App\Contracts\{
     ProviderInterface,
