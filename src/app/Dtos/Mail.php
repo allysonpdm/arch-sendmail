@@ -25,8 +25,8 @@ final class Mail extends Data
         public array $attachments = [],
         public array $stringAttachments = [],
     ) {
-        $destinatario = $this->setDestinatario($destinatario);
-        $remetente = $this->setRemetente($remetente);
+        $this->destinatario = $this->setDestinatario($destinatario);
+        $this->remetente = $this->setRemetente($remetente);
     }
 
     private function setDestinatario(Destinatario|string $destinatario): Destinatario

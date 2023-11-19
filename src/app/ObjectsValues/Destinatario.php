@@ -7,9 +7,14 @@ use PhpObjectValues\App\ObjectValues\Email;
 class Destinatario
 {
     public function __construct(
-        public Email $email,
+        public Email|string $email,
         public ?string $nome = null,
     ) {
-        // Code here...
+        if(
+            !empty($email) &&
+            !($email instanceof Email)
+        ){
+            $this->email = new Email($email);
+        }
     }
 }

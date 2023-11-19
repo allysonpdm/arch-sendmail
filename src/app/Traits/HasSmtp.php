@@ -9,7 +9,7 @@ use ArchSendMail\App\Dtos\{
 use Exception;
 use PHPMailer\PHPMailer\{
     PHPMailer,
-    Exception as GlobalException,
+    Exception as PHPMailerException,
     SMTP
 };
 
@@ -17,10 +17,10 @@ trait HasSmtp
 {
     protected Mail $mail;
     protected SmtpConfigs $smtpConfig;
-    protected SMTP $debugMode = SMTP::DEBUG_OFF;
     protected PHPMailer $mailer;
     protected string $charSet = 'UTF-8';
     protected string $language = 'pt_BR';
+    protected int $debugMode = SMTP::DEBUG_OFF;
 
     public function setSmtpConfigs(SmtpConfigs $smtpConfig): self
     {
@@ -40,7 +40,7 @@ trait HasSmtp
         return $this;
     }
 
-    public function setDebugMode(SMTP $debugMode): self
+    public function setDebugMode(int $debugMode): self
     {
         $this->debugMode = $debugMode;
         return $this;
@@ -52,15 +52,10 @@ trait HasSmtp
             $this->mail = $mail;
             $mailer = $this->prepareMailerSmtp();
             return $mailer->Send();
-            //echo "Email sent!", PHP_EOL;
-        } catch (phpmailerException $e) {
-            //TODO: Notificar a falha ao admin
-            //TODO: Adicionar a uma fila para reenviar o email
-            //echo "An error occurred. {$e->errorMessage()}", PHP_EOL; // Catch errors from PHPMailer.
         } catch (Exception $e) {
             //echo "Email not sent. {$this->mail->ErrorInfo}", PHP_EOL; // Catch errors from Amazon SES.
+            return false;
         }
-        return false;
     }
 
     protected function prepareMailerSmtp(): PHPMailer
@@ -94,7 +89,7 @@ trait HasSmtp
     {
         $this->mailer
             ->setFrom(
-                address:$this->mail->remetente->email,
+                address: $this->mail->remetente->email,
                 name: $this->mail->remetente->nome
             );
         return $this;
