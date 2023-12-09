@@ -31,13 +31,13 @@
     },
     "keywords": [
         "library-sendmail",
-        "send",
-        "mail"
+        "mail",
+        "send"
     ],
     "name": "allyson/sendmail",
     "require": {
         "allyson/php-object-values": "dev-master",
-        "php": "^8.2",
+        "php": "^8.1|^8.2",
         "phpmailer/phpmailer": "^6.5",
         "sendgrid/sendgrid": "^7.11",
         "spatie/laravel-data": "^3.9"
