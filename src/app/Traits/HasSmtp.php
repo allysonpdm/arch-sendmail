@@ -56,8 +56,8 @@ trait HasSmtp
             return $mailer->Send();
         } catch (Exception $exception) {
             $logger = new Logger('PHPMailer');
-            $logger->pushHandler(new StreamHandler('PHPMailer.log', Logger::INFO));
-            $logger->warning('PHPMailer erro: ' . $mailer->ErrorInfo);
+            $logger->pushHandler(new StreamHandler('PHPMailer.log', Logger::ERROR));
+            $logger->error($mailer->ErrorInfo);
             return false;
         }
     }
