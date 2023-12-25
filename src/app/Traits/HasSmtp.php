@@ -7,6 +7,8 @@ use ArchSendMail\App\Dtos\{
     SmtpConfigs
 };
 use Exception;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use PHPMailer\PHPMailer\{
     PHPMailer,
     Exception as PHPMailerException,
@@ -52,8 +54,10 @@ trait HasSmtp
             $this->mail = $mail;
             $mailer = $this->prepareMailerSmtp();
             return $mailer->Send();
-        } catch (Exception $e) {
-            //echo "Email not sent. {$this->mail->ErrorInfo}", PHP_EOL; // Catch errors from Amazon SES.
+        } catch (Exception $exception) {
+            $logger = new Logger('PHPMailer');
+            $logger->pushHandler(new StreamHandler('PHPMailer.log', Logger::INFO));
+            $logger->warning('PHPMailer erro: ' . $exception->getMessage());
             return false;
         }
     }
